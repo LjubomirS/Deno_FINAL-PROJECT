@@ -4,12 +4,14 @@ import { BufReader } from "https://deno.land/std/io/bufio.ts";
 
 import { pick } from "https://deno.land/x/lodash@4.17.15-es/lodash.js";
 
+import * as log from "https://deno.land/std@0.139.0/log/mod.ts";
+
 // interface Planet {
 //   [ key : string ] : string
 // };
 type Planet = Record<string, string>; //isto kao kod iznad
 
-let planets: Array<Planet>
+let planets: Array<Planet>;
 
 async function loadPlanetData() {
   const path = join("data", "kepler_exoplanets_nasa.csv");
@@ -50,7 +52,7 @@ async function loadPlanetData() {
 
 planets = await loadPlanetData();
 
-console.log(`${planets.length} habitable planets found!`)
+log.info(`${planets.length} habitable planets found!`)
 
 export function getAllPlanets(){
   return planets;
