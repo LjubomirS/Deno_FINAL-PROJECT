@@ -1,6 +1,9 @@
-import * as log from "https://deno.land/std@0.139.0/log/mod.ts";
+import { 
+    log, 
+    Application, 
+    send, 
+} from "./deps.ts";
 
-import { Application, send } from "https://deno.land/x/oak@v10.5.1/mod.ts";
 import api from "./api.ts";
 
 const app = new Application();
@@ -53,6 +56,7 @@ app.use(async(ctx)=>{
         "/images/favicon.png",
         "/javascripts/script.js",
         "/stylesheets/style.css",
+        "/videos/space.mp4"
     ]
     const filePath = ctx.request.url.pathname;
     
